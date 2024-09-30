@@ -57,6 +57,9 @@ function legacy_me_style_options_preprocess_layout_paragraphs_builder_controls(&
       ->getOptionDefinition($option);
     if ($context_defition['plugin'] == 'template_suggestion') {
       $behavior_settings = $paragraph->getAllBehaviorSettings();
+      if (!isset($behavior_settings['style_options'])) {
+        return;
+      }
       $style_options = $behavior_settings['style_options'];
       if (isset($style_options[$option])) {
         $key = $style_options[$option]['template_suggestion'];
